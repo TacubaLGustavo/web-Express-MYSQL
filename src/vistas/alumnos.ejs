@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Alumnos</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div >
+            <h1 >Lista de Alumnos</h1> <br>
+        </div>
+        
+        <div>
+            <a href="/alumnos/nuevo" class="btn btn-primary">Nuevo</a>
+            <a href="/" class="btn btn-secondary">Regresar</a>
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Matricula</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Ddi</th>
+                        <th scope="col">Dwi</th>
+                        <th scope="col">Ecbd</th>
+                        <th scope="col">Promedio</th>
+                        <th colspan="2" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    for(var i=0; i<data.length; i++)
+                    {
+                        let prom = (data[i].Ddi+data[i].Dwi+data[i].Ecbd)/3.0;
+                        prom = prom.toFixed(1);
+                    %>
+                    <tr>
+                        <th scope="row"><%=data[i].Matricula%></th>
+                        <td><%=data[i].Nombre%> </td>
+                        <td><%=data[i].Apellidos%></td>
+                        <td><%=data[i].Ddi%></td>
+                        <td><%=data[i].Dwi%></td>
+                        <td><%=data[i].Ecbd%></td>
+                        <td><%=prom%></td>
+                        <td><a href="/alumnos/editar/<%=data[i].Matricula%>" class="btn btn-warning">Editar</a></td>
+                        <td><a href="/alumnos/eliminar/<%=data[i].Matricula%>" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/bootstrap.bundle.min.js"></script>
+</body>
+</html>
